@@ -36,3 +36,424 @@
     transform: rotate(360deg);
   }
 }
+
+
+
+
+header .container-fluid{
+  display: flex;
+  justify-content: space-between;
+}
+
+header ul li {
+  list-style: none;
+  display: inline-block;
+}
+
+header .logo img {
+  max-width: 8.6rem;
+}
+
+header {
+  padding: 1.5rem 0;
+}
+
+header ul li a {
+  padding: .5rem 1rem;
+}
+
+header ul {
+  margin: 0;
+}
+
+
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+
+:root {
+    --black-color: #313232;
+    --theme-color: #224229;
+    --orange-color: orange;
+    --gray-color: #828787;
+    --light-gray-color: #E2E6DB;
+    --white-color: #ffffff;
+    --link-hover-color: #0d6efd;
+    --red-color: red;
+}
+
+.gray-text {
+    color: var(--gray-color) !important;
+}
+
+.red-text {
+    color: var(--red-color);
+}
+
+.gray-bg {
+    background-color: var(--light-gray-color) !important;
+}
+
+a {
+    color: var(--theme-color);
+    transition: .5s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+a:hover {
+    color: var(--link-hover-color);
+}
+
+html {
+
+    font-size: 10px;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--gray-color);
+    font-size: 1.4rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Libre Baskerville', serif;
+    color: var(--black-color);
+}
+
+h1 {
+    font-size: 6rem;
+}
+
+h2 {
+    font-size: 5rem;
+    margin-top: 0;
+    color: var(--theme-color);
+}
+
+h2 span {
+    font-style: italic;
+}
+
+h2.wbb {
+    position: relative;
+}
+
+h2.wbb::after {
+    content: '';
+    position: absolute;
+    width: 10rem;
+    height: 0.2rem;
+    bottom: -2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--light-gray-color);
+    z-index: 1;
+}
+
+.sub-title {
+    color: var(--black-color);
+    font-size: 1.6rem;
+    letter-spacing: .4rem;
+    margin-bottom: 1.5rem;
+}
+
+a,
+button,
+p {
+    font-size: 1.6rem;
+}
+
+.btn-v {
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: .2rem;
+    border-style: solid;
+    border-width: .1rem;
+    padding: 1.5rem 5rem 1.5rem 5rem;
+    border-color: var(--theme-color);
+    text-align: center;
+    transition: .5s ease;
+}
+
+.btn-v.white.with-white-bg {
+    background-color: var(--white-color);
+    color: var(--theme-color);
+}
+
+.btn-v:hover,
+.btn-v.white.with-white-bg:hover {
+    background-color: var(--theme-color);
+    color: var(--white-color);
+}
+
+.btn-v.white {
+    color: var(--white-color);
+    border: .1rem solid var(--white-color);
+}
+
+.btn-v.white:hover {
+    border: .1rem solid var(--theme-color);
+}
+
+.btn-v.lg.within-section {
+    margin: 0 auto;
+    width: 90%;
+}
+
+.btn-v.lg {
+    padding: 2rem 5rem 2rem 5rem;
+    text-transform: capitalize;
+    font-size: 2.2rem;
+}
+
+
+.carousel-indicators button {
+    background-color: var(--theme-color) !important;
+    width: .7rem !important;
+    height: .7rem !important;
+    margin-right: 1.5rem !important;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    border-radius: 100%;
+}
+
+.carousel,
+.carousel-inner,
+.carousel-item,
+.picsum-img-wrapper,
+.picsum-img-wrapper img {
+    height: 100%;
+}
+
+.picsum-img-wrapper img {
+    object-fit: cover;
+}
+
+.carousel-indicators {
+    margin-bottom: 0 !important;
+}
+
+.gap-top-lg {
+    margin-top: 20rem !important;
+}
+
+.gap-top {
+    margin-top: 10rem !important;
+}
+
+.gap-bottom {
+    margin-bottom: 10rem !important;
+}
+
+.gap-bottom-lg {
+    margin-bottom: 20rem !important;
+}
+
+.gap-top-sm {
+    margin-top: 5rem !important;
+}
+
+.gap-bottom-sm {
+    margin-bottom: 5rem !important;
+}
+
+.f-sm {
+    font-size: 1.4rem !important;
+}
+
+.f-md {
+    font-size: 1.6rem !important;
+}
+
+.f-lg {
+    font-size: 1.8rem !important;
+}
+
+.f-xl {
+    font-size: 2rem !important;
+}
+
+.container-fluid {
+    padding-right: 5rem !important;
+    padding-left: 5rem !important;
+}
+
+.container-fluid.p-0 {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+}
+
+img {
+    max-width: 100%;
+}
+
+.shake-animation:hover {
+    animation-name: elementor-animation-wobble-horizontal;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+}
+
+.shake-animation-v:hover {
+    animation-name: elementor-animation-wobble-vertical;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+}
+
+.sy-gap {
+    padding: 5rem 0;
+}
+
+.shift-bottom {
+    margin-bottom: -70rem;
+}
+
+.shares-block a {
+    font-size: 2rem;
+    border: 1px solid var(--light-gray-color);
+    border-radius: 100%;
+    display: flex;
+    width: 4rem;
+    height: 4rem;
+    align-items: center;
+    justify-content: center;
+    transition: .5s ease;
+    color: var(--theme-color);
+}
+
+.shares-block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 3rem;
+    margin-left: 0;
+}
+
+.shares-block a:hover {
+    background-color: var(--theme-color);
+    color: var(--white-color);
+}
+
+input,
+textarea {
+    outline: 0;
+    border: .1rem solid var(--light-gray-color);
+    width: 100%;
+    height: 5.6rem;
+    padding: 1rem 1.5rem;
+}
+
+textarea {
+    min-height: 8rem;
+}
+
+label {
+    color: var(--theme-color);
+    width: 100%;
+    text-align: left;
+    margin-bottom: 1rem;
+}
+
+.form-group {
+    margin-bottom: 3rem;
+}
+
+.logo-text {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--theme-color) !important; 
+}
+
+.error {
+    color: red;
+    margin-top: 5px;
+    text-align: left;
+}
+
+.product {
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.btn-v.btn.sm {
+    padding: 0.3rem 1rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ================Animations================= */
+@keyframes elementor-animation-wobble-horizontal {
+    16.65% {
+        transform: translateX(8px)
+    }
+
+    33.3% {
+        transform: translateX(-6px)
+    }
+
+    49.95% {
+        transform: translateX(4px)
+    }
+
+    66.6% {
+        transform: translateX(-2px)
+    }
+
+    83.25% {
+        transform: translateX(1px)
+    }
+
+    100% {
+        transform: translateX(0)
+    }
+}
+
+@keyframes elementor-animation-wobble-vertical {
+    16.65% {
+        transform: translateY(8px)
+    }
+
+    33.3% {
+        transform: translateY(-6px)
+    }
+
+    49.95% {
+        transform: translateY(4px)
+    }
+
+    66.6% {
+        transform: translateY(-2px)
+    }
+
+    83.25% {
+        transform: translateY(1px)
+    }
+
+    100% {
+        transform: translateY(0)
+    }
+}
+
+
