@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { json, Link } from 'react-router-dom';
+
 
 const ManageProducts = () => {
+    const auth = localStorage.getItem('user');
     const [product, setProduct] = useState([]);
     useEffect(() => {
         getProducts();
@@ -15,41 +17,64 @@ const ManageProducts = () => {
 
     const deleteProduct = async (id) => {
         let result = await fetch(`http://localhost:5000/product/${id}`, {
-        method: "Delete"
+            method: "Delete"
         });
         result = await result.json();
-        if(result){
+        if (result) {
             console.log("Product Deleted");
             getProducts();
         }
     }
     console.warn(product)
+    let name = "Manage Products"
     return (
         <>
-            <h2>Manage Products</h2>
-            <div className="container-fluid gap-top gap-bottom">
-                <div className="row">
-                    <div className="col-md-12">
-                        <div className="row">
-                        { 
-                                product.map((item, index) =>
-                                    <div key={item._id} className="col-md-2 product-block position-relative gap-bottom-sm">
-                                        <div className="product">
-                                            <div className="p-label orange"></div>
-                                            <div className="p-image-block">
-                                                <img src="https://www.ikea.com/in/en/images/products/fejka-artificial-potted-plant-in-outdoor-monstera__0614197_pe686822_s5.jpg" alt="" />
-                                            </div>
-                                            <div className="p-cnt-block pt-5 f-md">
-                                                <div className="pb-3">{item.name}</div>
-                                                <div className="gray-text">&#8377; <span>{item.price}</span></div>
-                                                <button className="btn-v btn sm mt-2" onClick={()=>deleteProduct(item._id)}>Delete</button>
-                                                <Link to={"/update-products/"+item._id}>Update</Link>
-                                            </div>
-                                        </div>
+            <div className="admin-wrapp">
+                <div className="container-fluid">
+                    <div className="admin-flex-block d-flex">
+                        <div className="admin-sidebar">
+                            <div className="user-profile mb-5 gap-top-sm">
+                                <h3>Welcome {JSON.parse(auth).name}</h3>
+                            </div>
+                            <ul>
+                                <li> <Link to="/admin">Dashboard</Link></li>
+                                <li> <Link to="/add-products">Add Products</Link></li>
+                                <li> <Link to="/manage-products">Manage Products</Link></li>
+                                <li> <Link to="/update-about-us">Edit About Us</Link></li>
+                            </ul>
+                        </div>
+                        <div className="admin-cnt-wrapp gap-top-sm">
+                            <div className="row m-0">
+                                <div className="col-md-10 mx-auto">
+                                    <div className="table-responsive">
+                                        <table>
+                                            <tr>
+                                                <th>S.no</th>
+                                                <th>Product Image</th>
+                                                <th>Product Name</th>
+                                                <th>Category</th>
+                                                <th>Price</th>
+                                                <th>Action</th>
+                                            </tr>
+                                            {
+                                                product.map((item, index) =>
+                                                    <tr key={item._id}>
+                                                        <td>{index + 1}</td>
+                                                        <td className="p-table-img"><img src="img/pc-1.jpg" alt="" /></td>
+                                                        <td>{item.name}</td>
+                                                        <td>{item.category}</td>
+                                                        <td>&#8377; <span>{item.price}</span></td>
+                                                        <td>
+                                                            <Link to={"/update-products/" + item._id}><i className="fa-solid fa-pen-to-square"></i></Link>
+                                                            <Link onClick={() => deleteProduct(item._id)}><i className="fa-solid fa-trash"></i></Link>
+                                                        </td>
+                                                    </tr>
+                                                )
+                                            }
+                                        </table>
                                     </div>
-
-                                )
-                            }
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

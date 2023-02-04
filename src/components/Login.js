@@ -9,7 +9,7 @@ const Login = () => {
     useEffect(() => {
         const auth = localStorage.getItem('user');
         if (auth) {
-            navigate('/');
+            navigate('/admin');
         }
     });
 
@@ -29,7 +29,7 @@ const Login = () => {
         // navigate('/');
         if (result.name) {
             localStorage.setItem("user", JSON.stringify(result));
-            navigate('/');
+            navigate('/admin');
         } else {
             alert('Please enter correct details');
         }
@@ -62,9 +62,9 @@ const Login = () => {
                                                         onChange={(e) => setPassword(e.target.value)} value={password} />
                                                 </div>
                                             </div>
-                                            <div className="col-md-12 text-end">
+                                            {/* <div className="col-md-12 text-end">
                                                 <Link to="/signup">Signup</Link>
-                                            </div>
+                                            </div> */}
                                         </div>
                                     </div>
                                     <div className="col-md-12 text-center">

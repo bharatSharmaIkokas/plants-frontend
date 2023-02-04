@@ -10,6 +10,10 @@ import ManageProducts from './components/MangeProducts';
 import UpdateProduct from './components/UpdateProduct';
 import PrivateComponent from './components/privateComponent';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import ContactUs from './components/ContactUs';
+import Admin from './components/Admin';
+import ProductDetail from './components/ProductDetail';
+import UpdateAbouUs from './components/UpdateAboutUs';
 
 
 function App() {
@@ -21,10 +25,13 @@ function App() {
         <Route path='/' element={<Home />}></Route>
           <Route path='/about-us' element={<AboutUs />}></Route>
           <Route path='/our-products' element={<Products />}></Route>
+          <Route path='/contact-us' element={<ContactUs />}></Route>
           <Route path='/add-products' element={<AddProduct/>}></Route>
           <Route path='/manage-products' element={<ManageProducts/>}></Route>
           <Route path='/update-products/:id' element={<UpdateProduct/>}></Route>
-          <Route path='/contact-us' element={<h1>Contact Us</h1>}></Route>
+          <Route path='/admin' element={<Admin />}></Route>
+          <Route path='/update-about-us' element={<UpdateAbouUs />}></Route>
+          <Route path='/product-detail/:id' element={<ProductDetail />}></Route>
           <Route element={<PrivateComponent />}>
           
           </Route>

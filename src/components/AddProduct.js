@@ -1,11 +1,14 @@
 import React, { useState } from "react";
+import { json, useNavigate, Link } from "react-router-dom";
 
 const AddProduct = () => {
+    const auth = localStorage.getItem('user');
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
     const [category, setCategory] = useState('');
     const [description, setDescription] = useState('');
     const [error, setError] = useState(false);
+    const navigate = useNavigate();
 
 
     const addProduct = async () => {
@@ -25,21 +28,33 @@ const AddProduct = () => {
             },
         });
         result = await result.json();
-        console.log(result);
+        console.warn(result);
+        navigate('/our-products');
     }
+    let pageName = "Add Products"
     return (
         <>
-            <section className="c-form sy-gap">
-                <div className="container">
-                    <div className="col-md-12">
-                        <div className="text-center gap-bottom-sm">
-                            <h2>Add Product</h2>
+        <div className="admin-wrapp">
+                <div className="container-fluid">
+                    <div className="admin-flex-block d-flex">
+                        <div className="admin-sidebar">
+                            <div className="user-profile mb-5 gap-top-sm">
+                                <h3>Welcome {JSON.parse(auth).name}</h3>
+                            </div>
+                            <ul>
+                            <li> <Link to="/admin">Dashboard</Link></li>
+                                <li> <Link to="/add-products">Add Products</Link></li>
+                                <li> <Link to="/manage-products">Manage Products</Link></li>
+                                <li> <Link to="/update-about-us">Edit About Us</Link></li>
+                            </ul>
                         </div>
-                        <div className="row">
-                            <div className="row">
+                        <div className="admin-cnt-wrapp gap-top-sm">
+                            <div className="row m-0">
+                                <div className="col-md-10 mx-auto">
+                                <div className="row m-0">
                                 <div className="col-md-8 mx-auto">
                                     <div className="row">
-                                        <div className="col-md-6">
+                                        <div className="col-md-12">
                                             <div className="form-group">
                                                 <label>Product Name <span className="red-text">*</span></label>
                                                 <input type="text" 
@@ -49,7 +64,7 @@ const AddProduct = () => {
                                                 { error && !name && <div className="error">Enter Valid name</div>}
                                             </div>
                                         </div>
-                                        <div className="col-md-6">
+                                        <div className="col-md-12">
                                             <div className="form-group">
                                                 <label>Product Price</label>
                                                 <input type="text" 
@@ -59,7 +74,7 @@ const AddProduct = () => {
                                                 { error && !price && <div className="error">Enter Valid Price</div>}
                                             </div>
                                         </div>
-                                        <div className="col-md-6">
+                                        <div className="col-md-12">
                                             <div className="form-group">
                                                 <label>Product Category</label>
                                                 <input type="text"
@@ -69,7 +84,7 @@ const AddProduct = () => {
                                                 { error && !category && <div className="error">Enter Valid Category</div>}
                                             </div>
                                         </div>
-                                        <div className="col-md-6">
+                                        <div className="col-md-12">
                                             <div className="form-group">
                                                 <label>Product Description</label>
                                                 <input type="text" 
@@ -84,11 +99,13 @@ const AddProduct = () => {
                                 <div className="col-md-12 text-center">
                                     <button type="button" onClick={addProduct} className="btn-v btn">Add Product</button>
                                 </div>
+                                </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
         </>
     )
 }

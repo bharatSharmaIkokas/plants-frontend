@@ -12,9 +12,9 @@ const Nav = () => {
         <div>
             <header>
                 <div className="container-fluid">
-                    <a href="#" className="logo">
-                        {/* <img src="{logo}" alt="Logo" /> */}
-                    </a>
+                    <Link className="logo" to="/">
+                        <img src="img/logo.svg" alt="Logo" />
+                    </Link>
                     <ul>
                         <li> <Link to="/">Home</Link></li>
                         <li> <Link to="/about-us">About Us</Link></li>
@@ -24,9 +24,10 @@ const Nav = () => {
                         {
                             auth ? 
                             <>
-                            <li> <Link to="/add-products">Add Products</Link></li>
-                            <li> <Link to="/manage-products">Manage Products</Link></li>
-                            <li><Link to="/signup" onClick={logout}>Log Out ({JSON.parse(auth).name})</Link></li>
+                            {/* <li> <Link to="/add-products">Add Products</Link></li>
+                            <li> <Link to="/manage-products">Manage Products</Link></li> */}
+                            <li> <Link to="/admin">Dashboard</Link></li>
+                            <li><Link to="/login" onClick={logout}>Log Out</Link></li>
                             </>
                             : 
                             <>
@@ -37,10 +38,10 @@ const Nav = () => {
                     </ul>
                     <ul className="contacts">
                         <li>
-                            <a href="tel:9898989898"><i className="fa-solid fa-phone"></i></a>
+                            <Link to="tel:9898989898"><i className="fa-solid fa-phone"></i></Link>
                         </li>
                         <li>
-                            <a href="mailto:ask@junglegrooming.com"><i className="fa-solid fa-envelope"></i></a>
+                            <Link to="mailto:ask@junglegrooming.com"><i className="fa-solid fa-envelope"></i></Link>
                         </li>
                     </ul>
                 </div>
