@@ -17,6 +17,7 @@ const Admin = () => {
                             <li> <Link to="/add-products">Add Products</Link></li>
                             <li> <Link to="/manage-products">Manage Products</Link></li>
                             <li> <Link to="/update-about-us">Edit About Us</Link></li>
+                            <li> <Link to="/conatct-data">Contact Data</Link></li>
                         </ul>
                     </div>
                     <div className="admin-cnt-wrapp gap-top-sm">

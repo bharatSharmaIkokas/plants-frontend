@@ -2,6 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
+    const Mailto = ({ email, ...props }) => {
+        return (
+            <a href={`mailto:${email}`}>
+                {props.children}
+            </a>
+        );
+    }
     return (
         <footer>
             <div className="footer-top-block">
@@ -13,9 +20,9 @@ const Footer = () => {
                                     <div className="f-lg mb-4">COMPANY</div>
                                     <ul>
                                         <li><Link to="/">Home</Link></li>
-                                        <li><Link to="/">About Us</Link></li>
-                                        <li><Link to="/">Our Products</Link></li>
-                                        <li><Link to="/">Conatct Us</Link></li>
+                                        <li><Link to="/about-us">About Us</Link></li>
+                                        <li><Link to="/our-products">Our Products</Link></li>
+                                        <li><Link to="/contact-us">Conatct Us</Link></li>
                                     </ul>
                                 </div>
                                 <div className="col-md-6">
@@ -49,8 +56,10 @@ const Footer = () => {
                                     <div>
                                         <div className="f-lg mb-4">SUPPORT</div>
                                         <div className="f-md mb-3">Stay in the loop with special offers,plant-parenting tips, and more.</div>
-                                        <Link to="mailto:ask@junglegrooming.com"><i className="fa-solid fa-envelope"></i>
-                                            ask@junglegrooming.com</Link>
+
+                                        <Mailto email="ask@junglegrooming.com">
+                                            <i className="fa-solid fa-envelope"></i> ask@junglegrooming.com
+                                        </Mailto>
                                     </div>
                                 </div>
                             </div>

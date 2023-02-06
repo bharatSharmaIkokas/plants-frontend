@@ -27,8 +27,9 @@ const Login = () => {
         console.log(result);
         // localStorage.setItem("user", JSON.stringify(result));
         // navigate('/');
-        if (result.name) {
-            localStorage.setItem("user", JSON.stringify(result));
+        if (result.auth) {
+            localStorage.setItem("user", JSON.stringify(result.user));
+            localStorage.setItem("token", JSON.stringify(result.auth));
             navigate('/admin');
         } else {
             alert('Please enter correct details');

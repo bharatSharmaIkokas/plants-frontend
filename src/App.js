@@ -14,6 +14,7 @@ import ContactUs from './components/ContactUs';
 import Admin from './components/Admin';
 import ProductDetail from './components/ProductDetail';
 import UpdateAbouUs from './components/UpdateAboutUs';
+import ConatctData from './components/ConatctData';
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
           <Route path='/contact-us' element={<ContactUs />}></Route>
           <Route path='/add-products' element={<AddProduct/>}></Route>
           <Route path='/manage-products' element={<ManageProducts/>}></Route>
+          <Route path='/conatct-data' element={<ConatctData/>}></Route>
           <Route path='/update-products/:id' element={<UpdateProduct/>}></Route>
           <Route path='/admin' element={<Admin />}></Route>
           <Route path='/update-about-us' element={<UpdateAbouUs />}></Route>

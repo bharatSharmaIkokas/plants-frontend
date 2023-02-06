@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import OwlCarousel from 'react-owl-carousel2';
+import "../../node_modules/owl.carousel/dist/assets/owl.carousel.min.css";
 import { Link } from "react-router-dom";
 
 const ProductSlider = (props) => {
@@ -15,7 +16,11 @@ const ProductSlider = (props) => {
         getProducts();
     }, []);
     const getProducts = async () => {
-        let result = await fetch('http://localhost:5000/products');
+        let result = await fetch('http://localhost:5000/products', {
+            headers: {
+                authorization: ` bearer ${JSON.parse(localStorage.getItem('token'))}`
+            }
+        });
         result = await result.json();
         setProduct(result);
     }

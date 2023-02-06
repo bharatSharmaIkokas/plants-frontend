@@ -10,7 +10,11 @@ const AboutUs = () => {
         getAboutData();
     }, []);
     const getAboutData = async () => {
-        let result = await fetch('http://localhost:5000/about');
+        let result = await fetch('http://localhost:5000/about', {
+            headers: {
+                authorization: ` bearer ${JSON.parse(localStorage.getItem('token'))}`
+            }
+        });
         result = await result.json();
         setData(result);
     }

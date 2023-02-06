@@ -2,38 +2,38 @@ import React, { useEffect, useState } from "react";
 import { json, Link } from 'react-router-dom';
 
 
-const ManageProducts = () => {
+const ConatctData = () => {
     const auth = localStorage.getItem('user');
-    const [product, setProduct] = useState([]);
+    const [contact, setContact] = useState([]);
     useEffect(() => {
-        getProducts();
+        getContactData();
     }, []);
-    const getProducts = async () => {
-        let result = await fetch('http://localhost:5000/products', {
+    const getContactData = async () => {
+        let result = await fetch('http://localhost:5000/contact', {
             headers: {
                 authorization: ` bearer ${JSON.parse(localStorage.getItem('token'))}`
             }
         });
         result = await result.json();
-        setProduct(result);
+        setContact(result);
 
     }
 
-    const deleteProduct = async (id) => {
-        let result = await fetch(`http://localhost:5000/product/${id}`, {
-            method: "Delete",
+    const deleteData = async (id) => {
+        let result = await fetch(`http://localhost:5000/contact/${id}`, {
+            method: "Delete", 
             headers: {
                 authorization: ` bearer ${JSON.parse(localStorage.getItem('token'))}`
             }
         });
         result = await result.json();
         if (result) {
-            console.log("Product Deleted");
-            getProducts();
+            console.log("Conatct Deleted");
+            getContactData();
         }
     }
-    console.warn(product)
-    let name = "Manage Products"
+    console.warn(contact)
+    let name = "Manage Conatct"
     return (
         <>
             <div className="admin-wrapp">
@@ -58,23 +58,20 @@ const ManageProducts = () => {
                                         <table>
                                             <tr>
                                                 <th>S.no</th>
-                                                <th>Product Image</th>
-                                                <th>Product Name</th>
-                                                <th>Category</th>
-                                                <th>Price</th>
+                                                <th>Name</th>
+                                                <th>Email</th>
+                                                <th>Message</th>
                                                 <th>Action</th>
                                             </tr>
                                             {
-                                                product.map((item, index) =>
+                                                contact.map((item, index) =>
                                                     <tr key={item._id}>
                                                         <td>{index + 1}</td>
-                                                        <td className="p-table-img"><img src="img/pc-1.jpg" alt="" /></td>
                                                         <td>{item.name}</td>
-                                                        <td>{item.category}</td>
-                                                        <td>&#8377; <span>{item.price}</span></td>
+                                                        <td>{item.email}</td>
+                                                        <td><span>{item.message}</span></td>
                                                         <td>
-                                                            <Link to={"/update-products/" + item._id}><i className="fa-solid fa-pen-to-square"></i></Link>
-                                                            <Link onClick={() => deleteProduct(item._id)}><i className="fa-solid fa-trash"></i></Link>
+                                                            <Link onClick={() => deleteData(item._id)}><i className="fa-solid fa-trash"></i></Link>
                                                         </td>
                                                     </tr>
                                                 )
@@ -91,4 +88,4 @@ const ManageProducts = () => {
     )
 }
 
-export default ManageProducts;
+export default ConatctData;

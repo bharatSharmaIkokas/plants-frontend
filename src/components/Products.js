@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { json, Link } from "react-router-dom";
 import Footer from "./Footer";
 import IpBanner from "./IpBanner";
 
@@ -9,13 +9,33 @@ const Products = () => {
         getProducts();
     }, []);
     const getProducts = async () => {
-        let result = await fetch('http://localhost:5000/products');
+        let result = await fetch('http://localhost:5000/products', {
+            headers: {
+                authorization: ` bearer ${JSON.parse(localStorage.getItem('token'))}`
+            }
+        });
         result = await result.json();
         setProduct(result);
 
     }
     console.warn(product)
     let name = "Our Products";
+
+    const searchHandle = async (event) => {
+        let key = event.target.value;
+        if(!key) {
+            getProducts();
+        }
+        let result = await fetch(`http://localhost:5000/search/${key}`, {
+            headers: {
+                authorization: ` bearer ${JSON.parse(localStorage.getItem('token'))}`
+            }
+        });
+        result = await result.json();
+        if(result) {
+            setProduct(result);
+        }
+    }
     return (
         <>
             <IpBanner name={name} />
@@ -24,7 +44,7 @@ const Products = () => {
                     <div className="col-md-3">
                         <h4 className="fw-bold">Filter By Search</h4>
                         <div className="filter-block mt-4 gap-bottom-sm">
-                            <input type="search" placeholder="serch..." />
+                            <input type="text" placeholder="serch..." onChange={searchHandle} />
                         </div>
                         <h4 className="fw-bold">Filter By Category</h4>
                         <div className="filter-block mt-4">
@@ -47,7 +67,7 @@ const Products = () => {
                     <div className="col-md-9">
                         <div className="row">
                             {
-                                product.map((item, index) =>
+                               product.length > 0 ? product.map((item, index) =>
                                     <div key={item._id} className="col-md-3 product-block position-relative gap-bottom-sm">
                                         <Link to={"/product-detail/" + item._id}>
                                         <div className="product">
@@ -63,7 +83,10 @@ const Products = () => {
                                         </Link>
                                     </div>
 
-                                )
+                                ) : 
+                                <h3 className="no-result text-center mt-5">
+                                    No Result Found
+                                </h3>
                             }
                         </div>
                     </div>

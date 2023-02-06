@@ -72,6 +72,7 @@ header ul {
     --black-color: #313232;
     --theme-color: #224229;
     --orange-color: orange;
+    --green-color: green;
     --gray-color: #828787;
     --light-gray-color: #E2E6DB;
     --white-color: #ffffff;
@@ -786,6 +787,18 @@ table td i {
     display: inline-block;
 }
 
+.succes-message {
+    background-color: var(--green-color);
+    color: #ffffff;
+    font-size: 1.4rem;
+    font-weight: 600;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 3rem;
+    -webkit-animation: hideSection 5s forwards; 
+    animation: hideSection 5s forwards;
+}
+
 
 
 
@@ -875,5 +888,19 @@ table td i {
         transform: translateY(0)
     }
 }
+
+@keyframes hideSection {
+    0%   {opacity: 1;}
+    90%  {opacity: 1;}
+    100% {opacity: 0;}
+}
+
+@-webkit-keyframes hideSection {
+    0%   {opacity: 1;}
+    90%  {opacity: 1;}
+    100% {opacity: 0;}
+}
+
+
 
 

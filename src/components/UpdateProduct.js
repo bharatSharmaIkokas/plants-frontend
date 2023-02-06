@@ -16,7 +16,11 @@ const UpdateProduct = () => {
 
     const getProductDetails = async () => {
         console.warn(params);
-        let result = await fetch(`http://localhost:5000/product/${params.id}`);
+        let result = await fetch(`http://localhost:5000/product/${params.id}`, {
+            headers: {
+                authorization: ` bearer ${JSON.parse(localStorage.getItem('token'))}`
+            }
+        });
         result = await result.json();
         setName(result.name);
         setPrice(result.price);
@@ -29,7 +33,8 @@ const UpdateProduct = () => {
             method: "Put",
             body: JSON.stringify({ name, price, category, description }),
             headers: {
-                'Content-Type': "application/json"
+                'Content-Type': "application/json",
+                authorization: ` bearer ${JSON.parse(localStorage.getItem('token'))}`
             }
         });
 
@@ -51,6 +56,7 @@ const UpdateProduct = () => {
                                 <li> <Link to="/add-products">Add Products</Link></li>
                                 <li> <Link to="/manage-products">Manage Products</Link></li>
                                 <li> <Link to="/update-about-us">Edit About Us</Link></li>
+                                <li> <Link to="/conatct-data">Contact Data</Link></li>
                             </ul>
                         </div>
                         <div className="admin-cnt-wrapp gap-top-sm">
